@@ -42,4 +42,53 @@ select	dept,sum(salary)as	total_salary from employees	group by dept;
 
 select	count(Emp_Id),city from employees group by	city order by count(Emp_Id)desc;
 
+select	year(doj) as year, count(Emp_ID) from employees	group by year(doj);	
+create	table sales (product_id int,sell_price float,quantity int,state	varchar(20));
+
+insert	into	sales	values
+(121,320.0,3,'California'),
+(121,320.0,6,'Texas'),		
+(121,320.0,4,'Alaska'),	
+(123,290.0,2,'Texas'),	
+(123,290.00,7,'Calfironia'),	
+(123,290.00,4,'Washington'),	
+(121,320.0,7,'Ohio'),
+(121,320.0,2,'Arizone'),
+(121,290.00,8,'Colorado');
+
+select	*	from	sales;
+
+select	product_id,sum(sell_price * quantity) as revenue
+from sales group by	product_id;	
+
+create	table	c_product(product_id int ,cost_price float);
+insert	into	c_product	
+values	(121,270.0),
+(123,250.0);	
+select	c.product_id,sum((s.sell_price-c.cost_price)*	s.quantity)	as	profit
+from sales as s	inner join	c_product	as	c
+where	s.product_id=c.product_id
+group by	c.product_id;		
+
+select * from employees;
+select	dept,avg(salary) as	avg_salary from employees group by	dept having	avg(salary)>750000;	
+
+select	city,sum(salary) as	total from	employees group by	city having	sum(salary)>200000;
+
+select	dept,count(*)as	emp_count
+from	employees
+group by	dept
+having	count(*)>2;
+
+select	city,count(*)	as	emp_count
+from	employees
+where	city	!="Houston"	
+group by	city
+having	count(*)>2;
+
+select	dept,count(*)as	emp_count
+from	employees
+group by	dept
+having	avg(salary)>75000;
+
 
