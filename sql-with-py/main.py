@@ -21,7 +21,7 @@ def create_server_connection(host_name, user_name, user_password):
 
 # Put Your Mysql UserName,Password
 
-pw = "Mysql@1234"
+pw = "password"
 
 # Database   Name
 
