@@ -89,7 +89,30 @@ insert  into `offices`(`officeCode`,`city`,`phone`,`addressLine1`,`addressLine2`
 alter table offices modify addressLine1 varchar(100);
 alter table offices add col1 varchar(50);
 
+show create table offices;
 
+
+/*Select Command - All column, few columns, column alias, Distinct, Limit*/
+select * from offices;
+
+select * from offices limit 3;
+
+select officeCode, city from offices limit 3;
+
+select officeCode, 
+       city,
+	   postalCode as zipCode
+from offices limit 3;
+
+select distinct country as distinct_countries from offices;
+
+/*Select Command with inbuilt functions - count, min, max */
+select * from employees;
+
+select count(*) as total_rows,
+       min(employeeNumber) as min_emp_num,
+       max(employeeNumber) as max_emp_num
+from employees;
 
 
 
