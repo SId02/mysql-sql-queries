@@ -114,7 +114,80 @@ select count(*) as total_rows,
        max(employeeNumber) as max_emp_num
 from employees;
 
+/*Order By Clause */
+select * from employees order by officeCode;
 
+select * from employees order by officeCode desc;
+
+select * from employees order by country, salary desc;
+
+/* Where Clause - AND, OR, Like, IN, IS NULL, IS NOT NULL */
+select * from employees where reportsTo=1102;
+
+select * from employees where officeCode='1' and jobTitle='VP Sales';
+
+select * from employees where officeCode='1' or jobTitle='Sales Rep';
+
+select * from employees where jobTitle like 'Sales%';
+select * from employees where firstName like '____';
+
+select * from employees where officeCode in ('1','6');
+
+select * from offices;
+
+select * from offices where state is null;
+
+select * from offices where state is not null;
+
+/*Update Command */
+set sql_safe_updates = 0;
+update employees set jobTitle = 'Sales Representative' where jobTitle = 'Sales Rep';
+
+select * from employees;
+
+/*Delete Command */
+delete from employees where officeCode='1';
+
+select * from employees;
+
+select * from employees;
+
+/*Group By */
+select officeCode,
+       count(*) as employees_in_each_office
+from employees
+group by officeCode;
+
+select reportsTo,
+	   officeCode,
+       count(*) as employees_in_each_office
+from employees
+group by reportsTo,officeCode;
+
+/*Group By with Having */
+
+select officeCode,
+       count(*) as employees_in_each_office
+from employees
+group by officeCode having count(*)>=3;
+
+/* Joins - Inner, Left, Right */
+
+select * from employees;
+
+select * from offices;
+
+select 
+emp.*,
+ofc.*
+from employees emp
+inner join offices ofc on emp.officeCode=ofc.officeCode;
+
+select 
+emp.*,
+ofc.*
+from employees emp
+right join offices ofc on emp.officeCode=ofc.officeCode;
 
 
 
@@ -129,3 +202,4 @@ from employees;
 
 
 /* SQL Full Course | Learn Structured Query Language from Scratch | SQL Tutorial | @SCALER */ 
+/*45.03*/
