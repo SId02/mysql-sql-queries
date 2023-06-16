@@ -201,5 +201,3 @@ right join offices ofc on emp.officeCode=ofc.officeCode;
 
 
 
-/* SQL Full Course | Learn Structured Query Language from Scratch | SQL Tutorial | @SCALER */ 
-/*45.03*/
